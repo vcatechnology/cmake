@@ -5,7 +5,7 @@ A set of extensions to be used to enhance the functionality of CMake. Intended
 to be used as a subtree in a project:
 
 ```
-git subtree add -prefix cmake https://github.com/vcatechnology/cmake.git master --squash
+git subtree add --prefix cmake https://github.com/vcatechnology/cmake.git master --squash
 ```
 
 Then it is possible to use the modules by adding to the `CMAKE_MODULE_PATH`:
