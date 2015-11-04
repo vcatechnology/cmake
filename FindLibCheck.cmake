@@ -83,8 +83,8 @@ if(NOT LIBCHECK_FOUND)
   endif()
 
   # The user can specify an output location
-  if(CMAKE_ENABLE_THIRD_PARTY_DIR)
-    set(THIRD_PARTY_DIR "${CMAKE_ENABLE_THIRD_PARTY_DIR}")
+  if(CMAKE_THIRD_PARTY_DIR)
+    set(THIRD_PARTY_DIR "${CMAKE_THIRD_PARTY_DIR}")
   else()
     set(THIRD_PARTY_DIR third-party)
   endif()
