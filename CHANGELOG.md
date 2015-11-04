@@ -1,5 +1,18 @@
 # Changelog
 
+## [v0.2.2](https://github.com/vcatechnology/cmake/tree/v0.2.2) (2015-11-04)
+[Full Changelog](https://github.com/vcatechnology/cmake/compare/v0.2.1...v0.2.2)
+
+Enable the CMAKE_THIRD_PARTY_DIR variable
+
+**Closed issues:**
+
+_None_
+
+**Merged pull requests:**
+
+_None_
+
 ## [v0.2.1](https://github.com/vcatechnology/cmake/tree/v0.2.1) (2015-11-04)
 [Full Changelog](https://github.com/vcatechnology/cmake/compare/v0.2.0...v0.2.1)
 
