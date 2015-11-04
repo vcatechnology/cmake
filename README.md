@@ -22,5 +22,5 @@ git subtree pull --squash --prefix cmake https://github.com/vcatechnology/cmake.
 ```
 
 It is possible to replace the `master` in both commands with a version tag,
-such as `0.1.0`. If you would like to keep the whole history, omit the `--squash`
-argument.
+such as `v0.1.0`. If you would like to keep the whole history, omit the
+`--squash` argument.
