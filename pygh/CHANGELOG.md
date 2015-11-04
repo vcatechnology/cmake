@@ -1,5 +1,18 @@
 # Changelog
 
+## [v0.1.2](https://github.com/vcatechnology/pygh/tree/v0.1.2) (2015-11-04)
+[Full Changelog](https://github.com/vcatechnology/pygh/compare/v0.1.1...v0.1.2)
+
+Create a VERSION file
+
+**Closed issues:**
+
+_None_
+
+**Merged pull requests:**
+
+_None_
+
 ## [v0.1.1](https://github.com/vcatechnology/pygh/tree/v0.1.1) (2015-11-03)
 [Full Changelog](https://github.com/vcatechnology/pygh/compare/v0.1.0...v0.1.1)
 

@@ -20,39 +20,20 @@ def main():
     # Set up the argument parser
     parser = argparse.ArgumentParser(
         prog='pygh',
-        description='Performs a release of a GitHub project',
+        description='Performs a release of the Python GitLab scripts',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     # The filenames
     parser.add_argument('category',
                         choices=('major', 'minor', 'patch'),
                         help='the type of release')
-    parser.add_argument('--git-executable',
-                        default=pygh.find_exe_in_path('git'),
-                        help='the git executable to use')
-    parser.add_argument('--path',
-                        default=os.getcwd(),
-                        help='the path to the repository to release')
     parser.add_argument(
-        '--description',
+        'description',
         default=None,
         help='the markdown formatted description of the release')
-    parser.add_argument('--date',
-                        default=datetime.utcnow(),
-                        help='the release date')
-    parser.add_argument('--changelog',
-                        default='CHANGELOG.md',
-                        help='the name of the changelog to update')
     parser.add_argument('--token',
                         default=os.environ.get('GITHUB_TOKEN', None),
                         help='the GitHub token to perform the release with')
-    try:
-        repo = pygh.get_repo()
-    except pygh.ExecuteCommandError:
-        repo = None
-    parser.add_argument('--repo',
-                        default=repo,
-                        help='the GitHub repository location')
 
     # Output
     group = parser.add_mutually_exclusive_group()
