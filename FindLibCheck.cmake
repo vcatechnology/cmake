@@ -53,24 +53,34 @@ find_package_handle_standard_args(LibCheck DEFAULT_MSG LIBCHECK_LIBRARIES LIBCHE
 
 set(LIBCHECK_BUILT_FROM_SOURCE NO)
 if((NOT LIBCHECK_FOUND))
+    if(CMAKE_ENABLE_THIRD_PARTY_OUTPUT)
+      set(THIRD_PARTY_LOGGING 0)
+    else()
+      set(THIRD_PARTY_LOGGING 1)
+    endif()
+    if(CMAKE_ENABLE_THIRD_PARTY_DIR)
+      set(THIRD_PARTY_DIR "${CMAKE_ENABLE_THIRD_PARTY_DIR}")
+    else()
+      set(THIRD_PARTY_DIR third-party)
+    endif()
     set(LIBCHECK_BUILT_FROM_SOURCE YES)
     include(ExternalProject)
     message(STATUS "Check Unit Testing Framework Version - ${LIBCHECK_VERSION}")
     ExternalProject_Add(libcheck
         URL "https://downloads.sourceforge.net/project/check/check/${LIBCHECK_VERSION}/check-${LIBCHECK_VERSION}.tar.gz"
         URL_MD5 ${LIBCHECK_MD5_HASH}
-        PREFIX third-party
+        PREFIX ${THIRD_PARTY_DIR}
         BUILD_IN_SOURCE 1
         CMAKE_ARGS
           "-DCMAKE_BUILD_TYPE=Release"
           "-DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}"
           "-DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>"
-        LOG_DOWNLOAD 0
-        LOG_UPDATE 0
-        LOG_CONFIGURE 0
-        LOG_BUILD 0
-        LOG_TEST 0
-        LOG_INSTALL 0)
+        LOG_DOWNLOAD ${THIRD_PARTY_LOGGING}
+        LOG_UPDATE ${THIRD_PARTY_LOGGING}
+        LOG_CONFIGURE ${THIRD_PARTY_LOGGING}
+        LOG_BUILD ${THIRD_PARTY_LOGGING}
+        LOG_TEST ${THIRD_PARTY_LOGGING}
+        LOG_INSTALL ${THIRD_PARTY_LOGGING})
     ExternalProject_Get_Property(libcheck INSTALL_DIR)
     set(LIBCHECK_ROOT ${INSTALL_DIR})
     unset(INSTALL_DIR)
