@@ -7,7 +7,7 @@
 # IMPORTED Targets
 # ^^^^^^^^^^^^^^^^
 #
-# This module defines :prop_tgt:`IMPORTED` target ``LIBM::LIBM``, if
+# This module defines :prop_tgt:`IMPORTED` target ``System::LibM``, if
 # LIBM has been found.
 #
 # Result Variables
@@ -37,9 +37,9 @@ find_package_handle_standard_args(LibM DEFAULT_MSG LIBM_LIBRARIES LIBM_INCLUDE_D
 mark_as_advanced(LIBM_INCLUDE_DIRS LIBM_LIBRARIES)
 
 if(LIBM_FOUND)
-    if(NOT TARGET LIBM::LIBM)
-      add_library(LIBM::LIBM UNKNOWN IMPORTED)
-      set_target_properties(LIBM::LIBM PROPERTIES
+    if(NOT TARGET System::LibM)
+      add_library(System::LibM UNKNOWN IMPORTED)
+      set_target_properties(System::LibM PROPERTIES
         IMPORTED_LOCATION "${LIBM_LIBRARIES}"
         INTERFACE_INCLUDE_DIRECTORIES "${LIBM_INCLUDE_DIRS}")
     endif()

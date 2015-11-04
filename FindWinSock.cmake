@@ -7,7 +7,7 @@
 # IMPORTED Targets
 # ^^^^^^^^^^^^^^^^
 #
-# This module defines :prop_tgt:`IMPORTED` target ``WINSOCK::WINSOCK``, if
+# This module defines :prop_tgt:`IMPORTED` target ``System::LibWinSock``, if
 # WINSOCK has been found.
 #
 # Result Variables
@@ -93,9 +93,9 @@ find_package_handle_standard_args(WinSock DEFAULT_MSG WINSOCK_LIBRARIES WINSOCK_
 mark_as_advanced(WINSOCK_INCLUDE_DIRS WINSOCK_LIBRARIES)
 
 if(WINSOCK_FOUND)
-    if(NOT TARGET WINSOCK::WINSOCK)
-      add_library(WINSOCK::WINSOCK UNKNOWN IMPORTED)
-      set_target_properties(WINSOCK::WINSOCK PROPERTIES
+    if(NOT TARGET System::LibWinSock)
+      add_library(System::LibWinSock UNKNOWN IMPORTED)
+      set_target_properties(System::LibWinSock PROPERTIES
         IMPORTED_LOCATION "${WINSOCK_LIBRARIES}"
         INTERFACE_INCLUDE_DIRECTORIES "${WINSOCK_INCLUDE_DIRS}")
     endif()

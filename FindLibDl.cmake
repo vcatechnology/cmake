@@ -7,7 +7,7 @@
 # IMPORTED Targets
 # ^^^^^^^^^^^^^^^^
 #
-# This module defines :prop_tgt:`IMPORTED` target ``LIBDL::LIBDL``, if
+# This module defines :prop_tgt:`IMPORTED` target ``System::LibDl``, if
 # LIBDL has been found.
 #
 # Result Variables
@@ -37,9 +37,9 @@ find_package_handle_standard_args(LibDl DEFAULT_MSG LIBDL_LIBRARIES LIBDL_INCLUD
 mark_as_advanced(LIBDL_INCLUDE_DIRS LIBDL_LIBRARIES)
 
 if(LIBDL_FOUND)
-    if(NOT TARGET LIBDL::LIBDL)
-      add_library(LIBDL::LIBDL UNKNOWN IMPORTED)
-      set_target_properties(LIBDL::LIBDL PROPERTIES
+    if(NOT TARGET System::LibDl)
+      add_library(System::LibDl UNKNOWN IMPORTED)
+      set_target_properties(System::LibDl PROPERTIES
         IMPORTED_LOCATION "${LIBDL_LIBRARIES}"
         INTERFACE_INCLUDE_DIRECTORIES "${LIBDL_INCLUDE_DIRS}")
     endif()
