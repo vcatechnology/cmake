@@ -465,6 +465,15 @@ def create_changelog(current_version,
     return changelog
 
 
+def write_version(path, version, logger=EmptyLogger()):
+    if not isinstance(version, Version):
+        raise ValueError('must provide a version class')
+    version = Version(version)
+    with open(path, 'w') as f:
+        f.write('%s' % version)
+    logger.info('Wrote %s' % os.path.basename(path))
+
+
 def write_changelog(path, changelog, logger=EmptyLogger()):
     try:
         for line in fileinput.input(path, inplace=True):
@@ -585,6 +594,7 @@ def release(category='patch',
             date=datetime.utcnow(),
             description=None,
             changelog='CHANGELOG.md',
+            version='VERSION',
             template=changelog_template,
             logger=EmptyLogger(),
             hooks={}):
@@ -657,6 +667,15 @@ def release(category='patch',
 
     commit_file(changelog,
                 'Updated changelog for v%s' % current_version,
+                git_executable=git_executable,
+                logger=logger)
+
+    write_version(path=os.path.join(path, version),
+                  version=current_version,
+                  logger=logger)
+
+    commit_file(version,
+                'Updated version to v%s' % current_version,
                 git_executable=git_executable,
                 logger=logger)
 
