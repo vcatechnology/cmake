@@ -1,5 +1,18 @@
 # Changelog
 
+## [v0.1.3](https://github.com/vcatechnology/pygh/tree/v0.1.3) (2015-11-06)
+[Full Changelog](https://github.com/vcatechnology/pygh/compare/v0.1.2...v0.1.3)
+
+API documentation
+
+**Closed issues:**
+
+_None_
+
+**Merged pull requests:**
+
+  - Sphinx documentation [\#6](https://github.com/vcatechnology/pygh/pull/6)
+
 ## [v0.1.2](https://github.com/vcatechnology/pygh/tree/v0.1.2) (2015-11-04)
 [Full Changelog](https://github.com/vcatechnology/pygh/compare/v0.1.1...v0.1.2)
 

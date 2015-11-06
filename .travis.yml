@@ -1,0 +1,39 @@
+language: python
+
+sudo: false
+
+python:
+  - "3.5"
+env:
+  global:
+    - BUILD_DIR=build
+    - PYTHON_FILES=*.py test/*.py release
+    - DOCS_DIR=docs
+    - DOCS_COVERAGE=docs/_build/coverage/python.txt
+
+install:
+  - pip install --upgrade pip
+  - pip install --upgrade yapf
+  - pip install --upgrade sphinx
+  - pip install --upgrade requests
+  - pip install --upgrade pystache
+
+before_script:
+  - mkdir "${BUILD_DIR}"
+
+script:
+  # Run the unit tests
+  - nosetests
+  # Check documentation coveage
+  - make -C ${DOCS_DIR} coverage
+  - test $(sed -n '$=' "${DOCS_COVERAGE}") -eq 2 || (
+      >&2 echo "All APIs should have documentation:" &&
+      >&2 cat "${DOCS_COVERAGE}" &&
+      false
+    )
+  # Check style is correct
+  - yapf -d ${PYTHON_FILES} > "${BUILD_DIR}/style.diff" || (
+      >&2 echo "The style is incorrect:" &&
+      >&2 cat "${BUILD_DIR}/style.diff" &&
+      false
+    )

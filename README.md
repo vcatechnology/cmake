@@ -1,6 +1,8 @@
 pygh
 ====
 
+[![Build Status](https://travis-ci.org/vcatechnology/pygh.svg?branch=master)](https://travis-ci.org/vcatechnology/pygh)
+
 A set of GitHub related scripts that can perform certain useful tasks:
 
   - Release:
