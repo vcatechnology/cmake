@@ -8,8 +8,10 @@ import logging
 import argparse
 from datetime import datetime
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(
-    inspect.getfile(inspect.currentframe())))))
+file_path = os.path.abspath(inspect.getfile(inspect.currentframe()))
+folder_path = os.path.dirname(file_path)
+import_path = os.path.dirname(folder_path)
+sys.path.insert(0, import_path)
 import pygh
 
 
@@ -61,9 +63,9 @@ def main():
     if args.pop('quiet'):
         logger.setLevel(logging.WARN)
 
-    # Run the verification
+    # Run the release
     try:
-        pygh.release(logger=logger, **args)
+        pygh.release(logger=logger, path=folder_path, **args)
     except IOError as e:
         sys.stderr.write('IO error: %s\n' % e)
         sys.exit(1)
@@ -72,6 +74,9 @@ def main():
         sys.exit(1)
     except pygh.ReleaseError as e:
         sys.stderr.write('Failed to release: %s\n' % e)
+        sys.exit(1)
+    except pygh.HttpApiError as e:
+        sys.stderr.write('Failed to perform HTTP API request: %s\n' % e)
         sys.exit(1)
     except pygh.ExecuteCommandError as e:
         sys.stderr.write('%s: %s\n%s' % (e.message, ' '.join(e.cmd), e.err))
